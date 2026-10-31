@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class studentsGrade {
+public class StudentsGrade {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -9,7 +9,13 @@ public class studentsGrade {
 
         System.out.print("Enter the number of subjects: ");
         int numSubjects = input.nextInt();
-        scanner.nextLine(); 
+        input.nextLine(); 
+
+        if (numStudents <= 0 || numSubjects <= 0) {
+            System.out.println("The number of students and subjects must be greater than zero.");
+            input.close();
+            return;
+        }
 
         String[] studentNames = new String[numStudents];
         double[] studentAverages = new double[numStudents];
@@ -17,17 +23,18 @@ public class studentsGrade {
 
         for (int index = 0; index < numStudents; index++) {
             System.out.println("\n-------------------------------------");
-            System.out.print("Enter name for Student ," + (index + 1) + ": ");
+            System.out.print("Enter name for Student " + (index + 1) + ": ");
             studentNames[index] = input.nextLine();
 
             double studentSubjectSum = 0;
 
             for (int indextwo = 0; indextwo < numSubjects; indextwo++) {
-                System.out.print("  Enter score for Subject ," + (indextwo + 1) + ": ");
+                System.out.print("Enter score for Subject " + (indextwo + 1) + ": ");
                 double score = input.nextDouble();
                 studentSubjectSum += score;
             }
-            scanner.nextLine(); 
+
+            input.nextLine(); 
 
             double average = studentSubjectSum / numSubjects;
             studentAverages[index] = average;
@@ -37,14 +44,15 @@ public class studentsGrade {
         System.out.println("\n=====================================");
         System.out.println("           CLASS SUMMARY             ");
         System.out.println("=====================================");
-        
+
         for (int index = 0; index < numStudents; index++) {
             String grade;
+
             if (studentAverages[index] >= 90) {
                 grade = "A";
             } else if (studentAverages[index] >= 80) {
                 grade = "B";
-            } else if (studentAverages[index] >=70) {
+            } else if (studentAverages[index] >= 70) {
                 grade = "C";
             } else if (studentAverages[index] >= 60) {
                 grade = "D";
@@ -52,16 +60,18 @@ public class studentsGrade {
                 grade = "F";
             }
 
-            System.out.printf("Student: %-15s | Average: %-6.2f | Final Grade: %s\n", 
-                    studentNames[index], studentAverages[index], grade);
+            System.out.printf(
+                "Student: %-15s | Average: %-6.2f | Final Grade: %s%n",
+                studentNames[index], studentAverages[index], grade
+            );
         }
 
         double classAverage = classTotalSum / numStudents;
+
         System.out.println("-------------------------------------");
-        System.out.printf("Overall Class Average: %.2f\n", classAverage);
+        System.out.printf("Overall Class Average: %.2f%n", classAverage);
         System.out.println("=====================================");
 
-        scanner.close();
+        input.close();
     }
 }
-
