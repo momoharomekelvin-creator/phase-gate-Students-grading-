@@ -5,7 +5,7 @@ public class studentsGrade {
         Scanner input = new Scanner(System.in);
 
         System.out.print("Enter the number of students: ");
-        int numStudents = scanner.nextInt();
+        int numStudents = input.nextInt();
 
         System.out.print("Enter the number of subjects: ");
         int numSubjects = input.nextInt();
