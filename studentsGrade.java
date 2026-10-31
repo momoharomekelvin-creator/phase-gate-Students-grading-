@@ -44,7 +44,7 @@ public class studentsGrade {
                 grade = "A";
             } else if (studentAverages[index] >= 80) {
                 grade = "B";
-            } else if (studentAverages[index] >=                                                             70) {
+            } else if (studentAverages[index] >=70) {
                 grade = "C";
             } else if (studentAverages[index] >= 60) {
                 grade = "D";
